@@ -10,4 +10,11 @@ public class PortalOpen : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    public IEnumerator TelPo(GameObject portal)
+    {       
+        portal.GetComponent<BoxCollider>().isTrigger = false;
+        yield return new WaitForSeconds(1f);
+        portal.GetComponent<BoxCollider>().isTrigger = true;
+    }
 }
