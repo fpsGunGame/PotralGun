@@ -12,7 +12,7 @@ namespace Script
 
         void Awake()
         {
-            _pool = GetComponent<PoolingManger>();
+            _pool = GameObject.Find("PoolingManager").GetComponent<PoolingManger>();
         }
 
         // Update is called once per frame

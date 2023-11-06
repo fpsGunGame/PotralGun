@@ -15,8 +15,8 @@ namespace Script
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject bull = Instantiate(bullet);
-                bull.SetActive(false);
                 bulletpool[i] = bull;
+                bull.SetActive(false);
             }
         }
        
