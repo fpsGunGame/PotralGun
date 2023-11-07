@@ -6,9 +6,6 @@ namespace Script
     public class Shoot : MonoBehaviour
     {
         PoolingManger _pool;
-        
-        public Transform firePos;
-        public GameObject player;
 
         void Awake()
         {
@@ -19,23 +16,10 @@ namespace Script
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
-                Fire();
+                _pool.Fire();
+            if (Input.GetKeyDown(KeyCode.R) && _pool.reloadTime == 0)
+                _pool.Reload();
         }
         // ReSharper disable Unity.PerformanceAnalysis
-        void Fire()
-        {
-            for (int j = 0; j < _pool.poolSize; j++)
-            {
-                GameObject bullet = _pool.bulletpool[j];
-                if (bullet.activeSelf == false)
-                {
-                    bullet.SetActive(true);
-                    bullet.transform.position = firePos.transform.position;
-                    bullet.transform.rotation = player.transform.rotation;
-                    bullet.GetComponent<Rigidbody>().AddForce(Vector3.forward * (Time.deltaTime * 5));
-                    break;
-                }
-            }
-        }
     }
 }

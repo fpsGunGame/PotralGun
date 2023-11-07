@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Script
@@ -6,6 +7,8 @@ namespace Script
     {
         // Start is called before the first frame update
         public int poolSize = 20;
+        private int bulletSize;
+        public float reloadTime;
         
         public GameObject bullet;
         public GameObject[] bulletpool;
@@ -19,6 +22,49 @@ namespace Script
                 bull.SetActive(false);
             }
         }
-       
+
+        private void Update()
+        {
+            if (reloadTime > 0)
+            {
+                Reload();
+            }
+                
+        }
+
+        public void Fire()
+        {
+            for (int j = 0; j < poolSize; j++)
+            {
+                bullet = bulletpool[j];
+                if (bullet.activeSelf == false)
+                {
+                    bullet.SetActive(true);
+                    bulletSize--;
+                    break;
+                }
+
+                if (bulletSize == 0)
+                {
+                    Reload();
+                }
+            }
+        }
+
+        public void Reload()
+        {
+            reloadTime += Time.deltaTime;
+            if (reloadTime > 1f)
+            {
+                for (int i = 0; i < poolSize; i++)
+                {
+                    bullet = bulletpool[i];
+                    if (bullet.activeSelf)
+                        bullet.SetActive(false);
+                }
+                bulletSize = poolSize;
+                reloadTime = 0;
+            }    
+        }
     }
 }
