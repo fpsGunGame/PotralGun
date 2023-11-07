@@ -42,8 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\PoolingManger.cs" />
-     <Compile Include="Assets\Script\Shoot.cs" />
      <Compile Include="Assets\Script\Bullet.cs" />
+     <Compile Include="Assets\Script\Shoot.cs" />
+     <Compile Include="Assets\Script\CamController.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Assets\ExModel\SciFi Gun\Components" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

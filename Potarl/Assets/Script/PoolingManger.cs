@@ -41,12 +41,10 @@ namespace Script
                 {
                     bullet.SetActive(true);
                     bulletSize--;
+                    Debug.Log(bulletSize);
+                    if (bulletSize == 0)
+                        Reload();
                     break;
-                }
-
-                if (bulletSize == 0)
-                {
-                    Reload();
                 }
             }
         }
